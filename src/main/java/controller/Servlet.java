@@ -1,6 +1,8 @@
 package controller;
 
 import controller.commands.Command;
+import controller.commands.GoToLoginCommand;
+import controller.commands.GoToRegistrationCommand;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletConfig;
@@ -26,6 +28,9 @@ public class Servlet extends HttpServlet {
     public void init(ServletConfig servletConfig) throws ServletException {
         Locale.setDefault(Locale.ENGLISH);
 
+        commandMap.put("/toregistr", new GoToRegistrationCommand());
+        commandMap.put("/index", new GoToLoginCommand());
+
     }
 
     @Override
@@ -41,7 +46,7 @@ public class Servlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String path = request.getRequestURI();
         path = path.replaceAll("/servlet", "");
-        Command command = commandMap.getOrDefault(path, (r) -> "/index.jsp");
+        Command command = commandMap.getOrDefault(path, (r) -> "/index");
         String page = command.execute(request);
         if(page.contains("redirect: ")) {
             page = page.replaceAll("redirect: ", "");

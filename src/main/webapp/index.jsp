@@ -59,7 +59,7 @@
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
             <li class="nav-item">
-              <a class="nav-link" href="#"><fmt:message key="registration"/></a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/servlet/toregistr"><fmt:message key="registration"/></a>
             </li>
 
             </li>
@@ -68,7 +68,33 @@
       </nav>
 
       <div class="container-fluid">
-        <!--  CONTENT  -->
+        <div class="row">
+          <div class="col-sm-1">
+          </div>
+          <div class="col-10">
+            <div class="display-3" align="center">
+              <fmt:message key="welcome"/>
+            </div>
+            <form action="${pageContext.request.contextPath}/servlet/login" method="post" align="center">
+              <div class="form-group">
+                <label for="login"><fmt:message key="login"/> </label>
+                <input type="login" class="form-control" id="login" name="login">
+              </div>
+              <div class="form-group">
+                <label for="pass"><fmt:message key="password"/> </label>
+                <input type="password" class="form-control" id="pass" name="pass">
+              </div>
+
+              <button type="submit" class="btn btn-primary"><fmt:message key="loginLable"/> </button>
+
+            </form>
+          </div>
+
+          <div class="col-sm-1">
+
+          </div>
+        </div>
+      </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->

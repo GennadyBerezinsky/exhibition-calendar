@@ -20,7 +20,7 @@ public class LoginCommand implements Command {
             return "index.jsp";
         }
 
-        // TODO: 26.02.2019  : check if logged
+
 
         if(login.equals("admin")) {
             AuthUtility.login(request, login);
