@@ -1,8 +1,6 @@
 package controller;
 
-import controller.commands.Command;
-import controller.commands.GoToLoginCommand;
-import controller.commands.GoToRegistrationCommand;
+import controller.commands.*;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletConfig;
@@ -12,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
 
@@ -27,9 +26,15 @@ public class Servlet extends HttpServlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         Locale.setDefault(Locale.ENGLISH);
+        servletConfig.getServletContext().setAttribute("loggedUsers", new HashSet<String>());
 
         commandMap.put("/toregistr", new GoToRegistrationCommand());
-        commandMap.put("/index", new GoToLoginCommand());
+        commandMap.put("/index", new GoToIndexCommand());
+        commandMap.put("/user", new GoToUserCommand());
+        commandMap.put("/admin", new GoToAdminCommand());
+        commandMap.put("/login", new LoginCommand());
+        commandMap.put("/registration", new RegistrationCommand());
+
 
     }
 
@@ -44,10 +49,12 @@ public class Servlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String path = request.getRequestURI();
+        String path = request.getRequestURI().toLowerCase();
         path = path.replaceAll("/servlet", "");
-        Command command = commandMap.getOrDefault(path, (r) -> "/index");
+        log.info(path);
+        Command command = commandMap.getOrDefault(path, (r) -> "/index.jsp");
         String page = command.execute(request);
+        log.info(page);
         if(page.contains("redirect: ")) {
             page = page.replaceAll("redirect: ", "");
             String redirect = request.getContextPath() + "/servlet" + page;

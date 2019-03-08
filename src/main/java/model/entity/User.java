@@ -14,12 +14,14 @@ public class User {
     private long idUser;
     private String name;
     private String login;
+    private String pass;
     private ROLE role;
 
     private User(Builder builder) {
         this.idUser = builder.idUser;
         this.name = builder.name;
         this.login = builder.login;
+        this.pass = builder.pass;
         this.role = builder.role;
     }
 
@@ -35,15 +37,20 @@ public class User {
         return login;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
     public String getRole() {
         return role.toString();
     }
 
-    static class Builder {
-        private long idUser;
-        private String name;
-        private String login;
-        private ROLE role;
+    public static class Builder {
+        private long idUser = 0;
+        private String name = "";
+        private String login = "";
+        private String pass = "";
+        private ROLE role = ROLE.UNKNOWN;
 
         public Builder setIdUser(long id) {
             this.idUser = id;
@@ -60,6 +67,10 @@ public class User {
             return this;
         }
 
+        public Builder setPassword(String password) {
+            this.pass = password;
+            return this;
+        }
         public Builder setRole(String stringRole) {
             this.role = ROLE.valueOf(stringRole.toUpperCase());
             return this;

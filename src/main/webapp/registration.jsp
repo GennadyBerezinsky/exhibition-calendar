@@ -28,10 +28,10 @@
     <title>Simple Sidebar - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../css/simple-sidebar.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -76,7 +76,44 @@
         </nav>
 
         <div class="container-fluid">
-            REGISTRATION
+            <div class="row">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-10">
+                    <div class="display-3" align="center">
+                        <fmt:message key="welcome"/>
+                    </div>
+                    <form action="${pageContext.request.contextPath}/servlet/registration" method="post" align="center">
+
+                        <div class="form-group">
+                            <label for="name"><fmt:message key="INPUT_NAME"/> </label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="login"><fmt:message key="INPUT_LOGIN"/> </label>
+                            <input type="login" class="form-control" id="login" name="login">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><fmt:message key="INPUT_PASSWORD"/> </label>
+                            <input type="password" class="form-control" id="pass" name="pass">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm"><fmt:message key="CONFIRM_PASSWORD"/> </label>
+                            <input type="password" class="form-control" id="confirm" name="confirm">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"><fmt:message key="registration"/> </button>
+
+                    </form>
+                </div>
+
+                <div class="col-sm-1">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -86,8 +123,8 @@
 <!-- /#wrapper -->
 
 <!-- Bootstrap core JavaScript -->
-<script src="../../vendor/jquery/jquery.min.js"></script>
-<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Menu Toggle Script -->
 <script>

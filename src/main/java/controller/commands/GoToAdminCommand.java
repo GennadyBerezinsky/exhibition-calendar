@@ -3,14 +3,13 @@ package controller.commands;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by User on 04.03.2019.
+ * Created by User on 07.03.2019.
  */
 
-
-public class GoToRegistrationCommand implements Command {
+public class GoToAdminCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        return "/registration.jsp";
+        return "/WEB-INF/view/admin.jsp";
     }
 }

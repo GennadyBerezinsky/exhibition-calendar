@@ -3,11 +3,11 @@ package controller.commands;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by User on 04.03.2019.
+ * Created by User on 08.03.2019.
  */
 
 
-public class GoToLoginCommand implements Command  {
+public class GoToIndexCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {

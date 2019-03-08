@@ -12,8 +12,8 @@ import java.sql.SQLException;
  */
 
 
-public class JDBSDaoFactory extends DaoFactory {
-    private static final Logger log = Logger.getLogger(JDBSDaoFactory.class);
+public class JDBCDaoFactory extends DaoFactory {
+    private static final Logger log = Logger.getLogger(JDBCDaoFactory.class);
     private DataSource dataSource = MySQLConnectionPoolHolder.getDataSource();
 
     private Connection getConnection() {
