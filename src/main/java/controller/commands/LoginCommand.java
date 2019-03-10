@@ -36,9 +36,8 @@ public class LoginCommand implements Command {
         }
 
         //log.info("user.login -> " + user.getLogin());
-        if(!Objects.isNull(user)) {
+        if(!Objects.isNull(user) && user.getPass().equals(pass)) {
             String redirectPath = AuthUtility.login(request, user).toLowerCase();
-
             return "redirect: /" + redirectPath;
         }
         else {
