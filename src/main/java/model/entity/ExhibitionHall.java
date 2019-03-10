@@ -28,7 +28,7 @@ public class ExhibitionHall {
         return address;
     }
 
-    static class Builder {
+    public static class Builder {
         private long id = 0;
         private String nameHall = "";
         private String address = "";

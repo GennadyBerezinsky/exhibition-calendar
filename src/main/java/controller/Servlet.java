@@ -26,14 +26,27 @@ public class Servlet extends HttpServlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         Locale.setDefault(Locale.ENGLISH);
+
         servletConfig.getServletContext().setAttribute("loggedUsers", new HashSet<String>());
 
+
         commandMap.put("/toregistr", new GoToRegistrationCommand());
+        commandMap.put("/registration", new RegistrationCommand());
+
         commandMap.put("/index", new GoToIndexCommand());
         commandMap.put("/user", new GoToUserCommand());
         commandMap.put("/admin", new GoToAdminCommand());
         commandMap.put("/login", new LoginCommand());
-        commandMap.put("/registration", new RegistrationCommand());
+
+
+        commandMap.put("/newcat", new NewcatCommand());
+        commandMap.put("/gotonewcat", new GoToNewcatCommand());
+
+        commandMap.put("/gotonewhall", new GoToNewhallCommand());
+        commandMap.put("/newhall", new NewHallCommand());
+
+        commandMap.put("/gotonewexhibition", new GoToNewExhibitionCommand());
+        commandMap.put("/newexhibition", new NewExhibitionCommand());
 
 
     }

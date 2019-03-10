@@ -16,6 +16,6 @@ public class GoToUserCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         log.info("here");
-        return "/WEB-INF/view/user.jsp";
+        return "/WEB-INF/view/user/user.jsp";
     }
 }

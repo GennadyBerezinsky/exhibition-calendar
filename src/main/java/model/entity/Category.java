@@ -35,5 +35,9 @@ public class Category {
             this.name = name;
             return this;
         }
+
+        public Category build() {
+            return new Category(this);
+        }
     }
 }

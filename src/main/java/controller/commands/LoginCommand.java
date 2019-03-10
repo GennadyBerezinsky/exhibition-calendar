@@ -22,17 +22,27 @@ public class LoginCommand implements Command {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
 
+
         if(login == null || login.equals("") || pass == null || pass.equals("")) {
+            request.setAttribute("error", "Empty login or password");
             return "/index.jsp";
         }
 
         User user = service.getUserByLogin(login);
-        log.info("user.login -> " + user.getLogin());
+
+        if(AuthUtility.isLogged(request, login)) {
+            request.setAttribute("error", "User already logged");
+            return "/index.jsp";
+        }
+
+        //log.info("user.login -> " + user.getLogin());
         if(!Objects.isNull(user)) {
             String redirectPath = AuthUtility.login(request, user).toLowerCase();
+
             return "redirect: /" + redirectPath;
         }
         else {
+            request.setAttribute("error", "Wrong login/password");
             return "/index.jsp";
         }
     }

@@ -69,31 +69,39 @@
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-1">
-          </div>
-          <div class="col-10">
-            <div class="display-3" align="center">
-              <fmt:message key="welcome"/>
-            </div>
-            <form action="${pageContext.request.contextPath}/servlet/login" method="post" align="center">
-              <div class="form-group">
-                <label for="login"><fmt:message key="login"/> </label>
-                <input type="login" class="form-control" id="login" name="login">
-              </div>
-              <div class="form-group">
-                <label for="pass"><fmt:message key="password"/> </label>
-                <input type="password" class="form-control" id="pass" name="pass">
-              </div>
-
-              <button type="submit" class="btn btn-primary"><fmt:message key="loginLable"/> </button>
-
-            </form>
-          </div>
-
-          <div class="col-sm-1">
-
-          </div>
+        <div class="col-sm-1">
         </div>
+        <div class="col-10">
+          <div class="display-3" align="center">
+            <fmt:message key="welcome"/>
+          </div>
+
+          <c:if test="${not empty error}">
+            <div class="alert alert-danger">
+              <strong>Error!</strong> <c:out value="${error}"/>
+            </div>
+          </c:if>
+
+
+          <form action="${pageContext.request.contextPath}/servlet/login" method="post" align="center">
+            <div class="form-group">
+              <label for="login"><fmt:message key="login"/> </label>
+              <input type="login" class="form-control" id="login" name="login">
+            </div>
+            <div class="form-group">
+              <label for="pass"><fmt:message key="password"/> </label>
+              <input type="password" class="form-control" id="pass" name="pass">
+            </div>
+
+            <button type="submit" class="btn btn-primary"><fmt:message key="loginLable"/> </button>
+
+          </form>
+        </div>
+
+        <div class="col-sm-1">
+
+        </div>
+      </div>
       </div>
       </div>
     </div>

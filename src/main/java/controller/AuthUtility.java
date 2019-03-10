@@ -22,6 +22,7 @@ public class AuthUtility {
         session.setAttribute("login", user.getLogin());
         session.setAttribute("role", user.getRole());
 
+
     }
 
     public static boolean isLogged(HttpServletRequest request, String login) {

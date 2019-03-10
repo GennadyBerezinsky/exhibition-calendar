@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -12,7 +13,8 @@ public class Exhibition {
     private long idCategory;
     private long idHall;
     private String name;
-    private LocalDate date;
+    private Date date;
+    private long price;
 
     private Exhibition(Builder builder) {
         this.idExpo = builder.idExpo;
@@ -20,6 +22,7 @@ public class Exhibition {
         this.idHall = builder.idHall;
         this.name = builder.name;
         this.date = builder.date;
+        this.price = builder.price;
     }
 
     public long getIdExpo() {
@@ -38,7 +41,11 @@ public class Exhibition {
         return name;
     }
 
-    public LocalDate getDate() {
+    public long getPrice() {
+        return price;
+    }
+
+    public Date getDate() {
         return date;
     }
 
@@ -47,7 +54,8 @@ public class Exhibition {
         private long idCategory = 0;
         private long idHall = 0;
         private String name = "";
-        private LocalDate date = LocalDate.now();
+        private Date date = Date.valueOf(LocalDate.now());
+        private long price = 0;
 
         public Builder setIdExpo(long idExpo) {
             this.idExpo = idExpo;
@@ -69,8 +77,13 @@ public class Exhibition {
             return this;
         }
 
-        public Builder setDate(LocalDate date) {
+        public Builder setDate(Date date) {
             this.date = date;
+            return this;
+        }
+
+        public Builder setPrice(long price) {
+            this.price = price;
             return this;
         }
 
