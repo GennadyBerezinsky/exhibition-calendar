@@ -17,7 +17,7 @@ public class AuthorizationService {
     public User getUserByLogin(String login) {
         User user = null;
         try{
-            JDBCDaoFactory factory = new JDBCDaoFactory();
+            DaoFactory factory = DaoFactory.getInstance();
             UserDao dao = factory.createUserDao();
             user = dao.findByLogin(login);
         } catch (Exception e) {
@@ -29,7 +29,7 @@ public class AuthorizationService {
     public boolean isExist(String login) {
         User user = null;
         try{
-            JDBCDaoFactory factory = new JDBCDaoFactory();
+            DaoFactory factory = DaoFactory.getInstance();
             UserDao dao = factory.createUserDao();
             user = dao.findByLogin(login);
         } catch (Exception e) {
@@ -43,11 +43,11 @@ public class AuthorizationService {
 
     public void registration(User user) {
         try{
-            log.warn("here ok");
-            JDBCDaoFactory factory = new JDBCDaoFactory();
-            log.warn("here ok");
+
+            DaoFactory factory = DaoFactory.getInstance();
+
             UserDao dao = factory.createUserDao();
-            log.warn("here ok");
+
             dao.create(user);
         } catch (Exception e) {
             log.error("exception: " + e.getStackTrace().toString());

@@ -1,9 +1,9 @@
 package model.service;
 
 import model.dao.CategoryDao;
+import model.dao.DaoFactory;
 import model.dao.ExhibitionDao;
 import model.dao.ExhibitionHallDao;
-import model.dao.mysql.JDBCDaoFactory;
 import model.entity.Category;
 import model.entity.Exhibition;
 import model.entity.ExhibitionHall;
@@ -19,7 +19,7 @@ public class AdminService {
 
     public int newCat(Category cat) {
         try{
-            JDBCDaoFactory factory = new JDBCDaoFactory();
+            DaoFactory factory = DaoFactory.getInstance();
             CategoryDao dao = factory.createCategoryDao();
             dao.create(cat);
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class AdminService {
 
     public int newHall(ExhibitionHall hall) {
         try{
-            JDBCDaoFactory factory = new JDBCDaoFactory();
+            DaoFactory factory = DaoFactory.getInstance();
             ExhibitionHallDao dao = factory.createExhibitionHallDao();
             dao.create(hall);
         } catch (Exception e) {
@@ -43,7 +43,7 @@ public class AdminService {
 
     public int newExhibition(Exhibition exhibition) {
         try{
-            JDBCDaoFactory factory = new JDBCDaoFactory();
+            DaoFactory factory = DaoFactory.getInstance();
             ExhibitionDao dao = factory.createExhibitionDao();
             dao.create(exhibition);
         } catch (Exception e) {

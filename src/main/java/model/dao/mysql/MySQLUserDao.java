@@ -89,6 +89,7 @@ public class MySQLUserDao implements UserDao {
                         .setLogin(userLogin)
                         .setName(name)
                         .setRole(role)
+                        .setPassword(pass)
                         .build();
             }
             else {

@@ -16,6 +16,9 @@ public class Exhibition {
     private Date date;
     private long price;
 
+    private String hallName;
+    private String catName;
+
     private Exhibition(Builder builder) {
         this.idExpo = builder.idExpo;
         this.idCategory = builder.idCategory;
@@ -23,6 +26,8 @@ public class Exhibition {
         this.name = builder.name;
         this.date = builder.date;
         this.price = builder.price;
+        this.catName = builder.catName;
+        this.hallName = builder.hallName;
     }
 
     public long getIdExpo() {
@@ -49,6 +54,14 @@ public class Exhibition {
         return date;
     }
 
+    public String getHallName() {
+        return hallName;
+    }
+
+    public String getCatName() {
+        return catName;
+    }
+
     public static class Builder {
         private long idExpo = 0;
         private long idCategory = 0;
@@ -56,6 +69,19 @@ public class Exhibition {
         private String name = "";
         private Date date = Date.valueOf(LocalDate.now());
         private long price = 0;
+
+        private String hallName = "";
+        private String catName = "";
+
+        public Builder setHallName(String hallName) {
+            this.hallName = hallName;
+            return this;
+        }
+
+        public Builder setCatName(String catName) {
+            this.catName = catName;
+            return this;
+        }
 
         public Builder setIdExpo(long idExpo) {
             this.idExpo = idExpo;

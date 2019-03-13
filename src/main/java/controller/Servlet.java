@@ -48,6 +48,9 @@ public class Servlet extends HttpServlet {
         commandMap.put("/gotonewexhibition", new GoToNewExhibitionCommand());
         commandMap.put("/newexhibition", new NewExhibitionCommand());
 
+        commandMap.put("/gotoselect", new GoToSelectExhibitionCommand());
+        commandMap.put("/update", new UpdateCommand());
+
 
     }
 

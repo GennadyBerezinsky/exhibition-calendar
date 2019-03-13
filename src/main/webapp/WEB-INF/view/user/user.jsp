@@ -42,10 +42,8 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><fmt:message key="MENU"/></div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light"><fmt:message key="EXHIBITIONS"/></a>
-        <a href="#" class="list-group-item list-group-item-action bg-light"><fmt:message key="EXHIBITION_HALLS"/></a>
-        <a href="#" class="list-group-item list-group-item-action bg-light"><fmt:message key="CATEGORYES"/></a>
-        <a href="#" class="list-group-item list-group-item-action bg-light"><fmt:message key="MY_TICKETS"/></a>
+        <a href="${pageContext.request.contextPath}/servlet/gotoselect" class="list-group-item list-group-item-action bg-light"><fmt:message key="EXHIBITIONS"/></a>
+        <a href="${pageContext.request.contextPath}/servlet/gotomytickets" class="list-group-item list-group-item-action bg-light"><fmt:message key="MY_TICKETS"/></a>
 
       </div>
     </div>
@@ -71,6 +69,7 @@
 
         <div class="container-fluid">
 
+            <h3>  <fmt:message key="USER_BASIS"/> </h3>
 
         </div>
     </div>

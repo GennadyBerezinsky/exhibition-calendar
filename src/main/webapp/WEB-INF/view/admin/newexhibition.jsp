@@ -95,13 +95,14 @@
                                 <label for="date"><fmt:message key="EXHIBITION_DATE"/> </label>
                                 <input type="date" class="form-control" id="date" name="date">
                             </div>
-                            <div class="form-group">
+
+
 
                                 <div class="form-group">
                                     <label for="price"><fmt:message key="PRICE"/> </label>
                                     <input type="number" class="form-control" id="price" name="price">
                                 </div>
-                                <div class="form-group">
+
 
                             <div class="form-group">
                                 <label for="hall"><fmt:message key="EXHIBITION_HALL"/></label>
@@ -126,6 +127,7 @@
                         <button type="submit" class="btn btn-primary"><fmt:message key="ADD"/> </button>
 
                     </form>
+
                 </div>
 
                 <div class="col-sm-1">

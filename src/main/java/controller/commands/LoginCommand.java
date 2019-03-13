@@ -35,7 +35,7 @@ public class LoginCommand implements Command {
             return "/index.jsp";
         }
 
-        //log.info("user.login -> " + user.getLogin());
+        log.info("paswords: " + pass + " " + user.getPass());
         if(!Objects.isNull(user) && user.getPass().equals(pass)) {
             String redirectPath = AuthUtility.login(request, user).toLowerCase();
             return "redirect: /" + redirectPath;

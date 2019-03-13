@@ -1,12 +1,12 @@
 package model.dao.mysql;
 
 import model.dao.ExhibitionDao;
+import model.dao.mysql.update.Update;
 import model.entity.Exhibition;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -49,7 +49,35 @@ public class MySQLExhibitionDao implements ExhibitionDao {
 
     @Override
     public List<Exhibition> findAll() {
-        return null;
+       List<Exhibition> exhibitionList = new ArrayList<>();
+      /*  final String query = sql.getString("FIND_ALL_EXHIBITION");
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id_expo");
+                long idCat = resultSet.getLong("id_cat");
+                long idHall = resultSet.getLong("id_hall");
+                String name = resultSet.getString("name_expo");
+                Date date = resultSet.getDate("date_expo");
+                long price = resultSet.getLong("price");
+
+                Exhibition exhibition = new Exhibition.Builder()
+                        .setIdExpo(id)
+                        .setIdCategory(idCat)
+                        .setIdExhibitionHall(idHall)
+                        .setName(name)
+                        .setDate(date)
+                        .setPrice(price)
+                        .build();
+                exhibitionList.add(exhibition);
+            }
+        } catch (SQLException e) {
+            log.error("SQL exception: " + e.getMessage());
+            e.printStackTrace();
+        }*/
+        return exhibitionList;
     }
 
     @Override
@@ -65,5 +93,54 @@ public class MySQLExhibitionDao implements ExhibitionDao {
     @Override
     public void close() {
 
+    }
+
+    @Override
+    public List<Exhibition> getSearchExhibition(long idHallParam, long idCatParam) {
+        List<Exhibition> exhibitionList = new ArrayList<>();
+        int counter = 1;
+        Update update= new Update();
+        update.setStrategy(idHallParam, idCatParam);
+        final String query = sql.getString(update.execute());
+        log.warn("strategy quey: " + query);
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            if(idHallParam != 0) {
+                statement.setLong(counter, idHallParam);
+                counter++;
+            }
+            if(idCatParam != 0) {
+                statement.setLong(counter, idCatParam);
+                counter++;
+            }
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id_expo");
+                long idCat = resultSet.getLong("id_cat");
+                long idHall = resultSet.getLong("id_hall");
+                String name = resultSet.getString("name_expo");
+                Date date = resultSet.getDate("date_expo");
+                long price = resultSet.getLong("price");
+                String hallName = resultSet.getString("name_hall");
+                String catName = resultSet.getString("name_cat");
+
+                Exhibition exhibition = new Exhibition.Builder()
+                        .setIdExpo(id)
+                        .setIdCategory(idCat)
+                        .setIdExhibitionHall(idHall)
+                        .setName(name)
+                        .setDate(date)
+                        .setPrice(price)
+                        .setCatName(catName)
+                        .setHallName(hallName)
+                        .build();
+                exhibitionList.add(exhibition);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return exhibitionList;
     }
 }

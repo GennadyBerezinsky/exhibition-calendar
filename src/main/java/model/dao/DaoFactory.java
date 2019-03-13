@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.dao.mysql.JDBCDaoFactory;
 import org.apache.log4j.Logger;
 
 /**
@@ -22,7 +23,8 @@ public abstract class DaoFactory {
         if(daoFactory == null) {
             synchronized (DaoFactory.class) {
                 if(daoFactory == null) {
-
+                    DaoFactory temp = new JDBCDaoFactory();
+                    daoFactory = temp;
                 }
             }
         }
