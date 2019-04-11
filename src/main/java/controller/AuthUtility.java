@@ -18,6 +18,7 @@ public class AuthUtility {
 
     public static void setRole(HttpServletRequest request, User user){
         HttpSession session = request.getSession();
+        session.setAttribute("user", user);
         session.setAttribute("id", user.getIdUser());
         session.setAttribute("login", user.getLogin());
         session.setAttribute("role", user.getRole());

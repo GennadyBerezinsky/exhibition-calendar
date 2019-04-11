@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 10.03.2019
-  Time: 21:54
+  Date: 13.03.2019
+  Time: 23:10
   To change this template use File | Settings | File Templates.
 --%>
 <!DOCTYPE html>
@@ -69,7 +69,7 @@
         </nav>
 
         <div class="container-fluid">
-            <form action="${pageContext.request.contextPath}/servlet/update" method="post">
+            <form action="${pageContext.request.contextPath}/servlet/updateghost" method="post">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -109,34 +109,26 @@
             <c:if test="${fn:length(expos) gt 0}">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th><fmt:message key="TABLE_ID_EXHIBITION"/> </th>
-                            <th><fmt:message key="TABLE_HALL"/> </th>
-                            <th><fmt:message key="TABLE_CAT"/> </th>
-                            <th><fmt:message key="TABLE_NAME_EXHIBITION"/> </th>
-                            <th><fmt:message key="TABLE_PRICE"/> </th>
-                            <th><fmt:message key="TABLE_DATE"/> </th>
-                            <th><fmt:message key="button.book"/> </th>
-                        </tr>
+                    <tr>
+                        <th><fmt:message key="TABLE_ID_EXHIBITION"/> </th>
+                        <th><fmt:message key="TABLE_HALL"/> </th>
+                        <th><fmt:message key="TABLE_CAT"/> </th>
+                        <th><fmt:message key="TABLE_NAME_EXHIBITION"/> </th>
+                        <th><fmt:message key="TABLE_PRICE"/> </th>
+                        <th><fmt:message key="TABLE_DATE"/> </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="i" items="${expos}" varStatus="status">
-                            <tr>
-                                <th>${i.getIdExpo()}</th>
-                                <th>${i.getHallName()}</th>
-                                <th>${i.getCatName()}</th>
-                                <th>${i.getName()}</th>
-                                <th>${i.getPrice()}</th>
-                                <th>${i.getDate()}</th>
-                                <form action="${pageContext.request.contextPath}/servlet/gotobook">
-                                    <th>
-                                        <input type="hidden" name="btnid" value="${i.getIdExpo()}">
-                                        <input type="submit" class="btn-primary" value="Book">
-
-                                    </th>
-                                </form>
-                            </tr>
-                        </c:forEach>
+                    <c:forEach var="i" items="${expos}" varStatus="status">
+                        <tr>
+                            <th>${i.getIdExpo()}</th>
+                            <th>${i.getHallName()}</th>
+                            <th>${i.getCatName()}</th>
+                            <th>${i.getName()}</th>
+                            <th>${i.getPrice()}</th>
+                            <th>${i.getDate()}</th>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </c:if>

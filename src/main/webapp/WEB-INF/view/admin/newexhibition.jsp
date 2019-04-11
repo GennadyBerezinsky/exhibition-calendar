@@ -41,7 +41,7 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading"><fmt:message key="MENU"/></div>
+        <div class="sidebar-heading"><fmt:message key="page.all.menu"/></div>
         <div class="list-group list-group-flush">
             <a href="${pageContext.request.contextPath}/servlet/newexhibition" class="list-group-item list-group-item-action bg-light"><fmt:message key="ADD_EXHIBITION"/></a>
             <a href="${pageContext.request.contextPath}/servlet/newcat" class="list-group-item list-group-item-action bg-light"><fmt:message key="ADD_CATEGORY"/></a>

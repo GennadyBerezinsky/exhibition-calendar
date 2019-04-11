@@ -44,7 +44,44 @@ public class MySQLExhibitionDao implements ExhibitionDao {
 
     @Override
     public Exhibition findById(int id) {
-        return null;
+        Exhibition e = null;
+
+        try( PreparedStatement statement = connection.prepareStatement(sql.getString("exhibition.getbyid"))) {
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                long idExpo = resultSet.getLong("id_expo");
+                long idHall = resultSet.getLong("id_hall");
+                long idCat = resultSet.getLong("id_cat");
+
+                String nameExpo = resultSet.getString("name_expo");
+                String nameHall = resultSet.getString("name_hall");
+
+                long price = resultSet.getLong("price");
+                Date date = resultSet.getDate("date_expo");
+
+                e = new Exhibition.Builder()
+                        .setDate(date)
+                        .setName(nameExpo)
+                        .setPrice(price)
+                        .setHallName(nameHall)
+                        .setIdCategory(idCat)
+                        .setIdExhibitionHall(idHall)
+                        .setIdExpo(idExpo)
+                        .build();
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return e;
     }
 
     @Override

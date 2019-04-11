@@ -10,6 +10,18 @@ public class Payment {
     private long idTicket;
     private long idUser;
 
+    public long getIdPayment() {
+        return idPayment;
+    }
+
+    public long getIdTicket() {
+        return idTicket;
+    }
+
+    public long getIdUser() {
+        return idUser;
+    }
+
     private Payment(Builder builder) {
         this.idPayment = builder.idPayment;
         this.idTicket = builder.idTicket;

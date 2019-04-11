@@ -4,18 +4,16 @@ import model.entity.Category;
 import model.entity.Exhibition;
 import model.entity.ExhibitionHall;
 import model.service.ListGetterService;
-import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by User on 11.03.2019.
+ * Created by User on 13.03.2019.
  */
 
 
-public class UpdateCommand implements Command {
-    private static final Logger log = Logger.getLogger(UpdateCommand.class);
+public class UpdateGhostCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -32,7 +30,6 @@ public class UpdateCommand implements Command {
         request.setAttribute("cats", cats);
         request.setAttribute("expos", exhibitionList);
 
-        log.trace("ids: hsll cat " + hall + " " + cat);
-        return "/WEB-INF/view/user/selectexhibitionghost.jsp";
+        return "/WEB-INF/view/user/selectexhibitiong.jsp";
     }
 }

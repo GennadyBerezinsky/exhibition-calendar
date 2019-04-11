@@ -29,14 +29,15 @@ public class MySQLCategoryDao implements CategoryDao {
     @Override
     public void create(Category entity) {
         final String query = sql.getString("CREATE_CATEGORY") ;
-        try{
-            PreparedStatement statement = connection.prepareStatement(query);
+        try(Connection c = connection){
+            PreparedStatement statement = c.prepareStatement(query);
             statement.setString(1, entity.getName());
             statement.executeUpdate();
         } catch (SQLException e) {
             log.error("sql exception: " + e.getMessage());
             e.printStackTrace();
         }
+
     }
 
     @Override

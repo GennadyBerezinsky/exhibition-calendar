@@ -50,7 +50,10 @@ public class Servlet extends HttpServlet {
 
         commandMap.put("/gotoselect", new GoToSelectExhibitionCommand());
         commandMap.put("/update", new UpdateCommand());
+        commandMap.put("/updateghost", new UpdateGhostCommand());
 
+        commandMap.put("/gotobook", new GoToBookingCommand());
+        commandMap.put("/book", new BookingCommand());
 
     }
 
@@ -75,6 +78,7 @@ public class Servlet extends HttpServlet {
             page = page.replaceAll("redirect: ", "");
             String redirect = request.getContextPath() + "/servlet" + page;
             response.sendRedirect(redirect);
+
         }
         else {
             request.getRequestDispatcher(page).forward(request, response);

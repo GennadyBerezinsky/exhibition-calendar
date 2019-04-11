@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm"><fmt:message key="CONFIRM_PASSWORD"/> </label>
+                            <label for="confirm"><fmt:message key="page.reg.confirm_pass"/> </label>
                             <input type="password" class="form-control" id="confirm" name="confirm">
                         </div>
 

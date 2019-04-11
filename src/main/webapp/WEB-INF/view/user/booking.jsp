@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 07.03.2019
-  Time: 23:45
+  Date: 06.04.2019
+  Time: 10:54
   To change this template use File | Settings | File Templates.
 --%>
 <!DOCTYPE html>
@@ -40,12 +40,12 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><fmt:message key="page.all.menu"/></div>
-      <div class="list-group list-group-flush">
-        <a href="${pageContext.request.contextPath}/servlet/gotoselect" class="list-group-item list-group-item-action bg-light"><fmt:message key="EXHIBITIONS"/></a>
-        <a href="${pageContext.request.contextPath}/servlet/gotomytickets" class="list-group-item list-group-item-action bg-light"><fmt:message key="MY_TICKETS"/></a>
+        <div class="sidebar-heading"><fmt:message key="page.all.menu"/></div>
+        <div class="list-group list-group-flush">
+            <a href="${pageContext.request.contextPath}/servlet/gotoselect" class="list-group-item list-group-item-action bg-light"><fmt:message key="EXHIBITIONS"/></a>
+            <a href="${pageContext.request.contextPath}/servlet/gotomytickets" class="list-group-item list-group-item-action bg-light"><fmt:message key="MY_TICKETS"/></a>
 
-      </div>
+        </div>
     </div>
 
 
@@ -69,7 +69,27 @@
 
         <div class="container-fluid">
 
-            <h3>  <fmt:message key="USER_BASIS"/> </h3>
+            <fmt:message key="page.book.basis"/>
+            <form action="${pageContext.request.contextPath}/servlet/book" method="post">
+
+                <input type="hidden" name="user" value="${user}">
+                <input type="hidden" name="expo" value="${exhibition}">
+
+
+
+                <fmt:message key="page.book.info"/>     <br>
+                <fmt:message key="EXHIBITION_NAME"/>: <c:out value="${exhibition.name}"/>     <br>
+                <fmt:message key="HALL_NAME"/>: <c:out value="${exhibition.hallName}"/> <br>
+                <fmt:message key="EXHIBITION_DATE"/>: <c:out value="${exhibition.date}"/>     <br>
+                 <fmt:message key="PRICE"/>: <c:out value="${exhibition.price}"/>    <br>
+
+                <label for="payment"><fmt:message key="page.book.label.price"/></label>
+                <input type="number" name="payment" id="payment">
+
+                <input class="btn-primary" type="submit" name="submit" value="book">
+
+
+            </form>
 
         </div>
     </div>

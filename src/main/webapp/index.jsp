@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<%@ page import="java.util.ResourceBundle" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<fmt:setBundle basename="strings"/>
-<html lang="en">
+
+<c:if test="${lang==null}">
+  <fmt:setBundle basename="strings" var="lang" scope="session"/>
+</c:if>
+
+<c:if test="${param.lang.equals('ua')}">
+
+  <fmt:setLocale value="ua" scope="session"/>
+  <fmt:setBundle basename="strings"
+                 var="lang" scope="session"/>
+
+</c:if>
+
+<html>
 
 <head>
 
@@ -31,19 +42,7 @@
 
   <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Start Bootstrap </div>
-      <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-      </div>
-    </div>
-     /#sidebar-wrapper -->
+
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -55,11 +54,16 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        <a href="index.jsp?lang=EN">English</a>
+        <a href="index.jsp?lang=UA">UA</a>
+
+
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/servlet/toregistr"><fmt:message key="registration"/></a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/servlet/toregistr"><fmt:message key="registration" bundle="${lang}"/></a>
             </li>
 
             </li>
@@ -73,8 +77,10 @@
         </div>
         <div class="col-10">
           <div class="display-3" align="center">
-            <fmt:message key="welcome"/>
+            <fmt:message key="welcome" bundle="${lang}"/>
           </div>
+          <c:out value="${param.lang}"/>
+
 
           <c:if test="${not empty error}">
             <div class="alert alert-danger">
@@ -85,15 +91,15 @@
 
           <form action="${pageContext.request.contextPath}/servlet/login" method="post" align="center">
             <div class="form-group">
-              <label for="login"><fmt:message key="login"/> </label>
+              <label for="login"><fmt:message key="login" bundle="${lang}"/> </label>
               <input type="login" class="form-control" id="login" name="login">
             </div>
             <div class="form-group">
-              <label for="pass"><fmt:message key="password"/> </label>
+              <label for="pass"><fmt:message key="password" bundle="${lang}"/> </label>
               <input type="password" class="form-control" id="pass" name="pass">
             </div>
 
-            <button type="submit" class="btn btn-primary"><fmt:message key="loginLable"/> </button>
+            <button type="submit" class="btn btn-primary"><fmt:message key="loginLable" bundle="${lang}"/> </button>
 
           </form>
         </div>

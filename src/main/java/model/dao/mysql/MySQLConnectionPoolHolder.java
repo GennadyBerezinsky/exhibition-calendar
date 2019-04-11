@@ -22,8 +22,8 @@ public class MySQLConnectionPoolHolder {
                     ds.setUrl("jdbc:mysql://localhost:3306/exhibitions");
                     ds.setUsername("root");
                     ds.setPassword("18480322");
-                    ds.setMinIdle(5);
-                    ds.setMaxIdle(10);
+                    ds.setMinIdle(50);
+                    ds.setMaxIdle(50);
                     ds.setMaxOpenPreparedStatements(100);
                     ds.setDriverClassName("com.mysql.jdbc.Driver");
                     dataSource = ds;
