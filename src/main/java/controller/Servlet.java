@@ -55,6 +55,8 @@ public class Servlet extends HttpServlet {
         commandMap.put("/gotobook", new GoToBookingCommand());
         commandMap.put("/book", new BookingCommand());
 
+        commandMap.put("/gotomytickets", new GoToMyTickets());
+
     }
 
     @Override

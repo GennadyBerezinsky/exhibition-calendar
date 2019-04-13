@@ -1,12 +1,11 @@
 package model.service;
 
-import model.dao.CategoryDao;
-import model.dao.DaoFactory;
-import model.dao.ExhibitionDao;
-import model.dao.ExhibitionHallDao;
+import model.dto.TicketListDto;
+import model.dao.*;
 import model.entity.Category;
 import model.entity.Exhibition;
 import model.entity.ExhibitionHall;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
@@ -16,6 +15,7 @@ import java.util.List;
 
 
 public class ListGetterService {
+    private static final Logger log = Logger.getLogger(ListGetterService.class);
 
     public List<ExhibitionHall> getHallList() {
         DaoFactory factory = DaoFactory.getInstance();
@@ -39,6 +39,12 @@ public class ListGetterService {
         DaoFactory factory = DaoFactory.getInstance();
         ExhibitionDao dao = factory.createExhibitionDao();
         return dao.getSearchExhibition(idHall, idCat);
+    }
+
+    public List<TicketListDto> getUserTicketList(long userId) {
+        DaoFactory factory = DaoFactory.getInstance();
+        TicketDao dao = factory.createTicketDao();
+        return dao.getUserTickets(userId);
     }
 
 }
