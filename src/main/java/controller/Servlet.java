@@ -1,6 +1,7 @@
 package controller;
 
 import controller.commands.*;
+import model.entity.User;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletConfig;
@@ -25,8 +26,10 @@ public class Servlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
-        Locale.setDefault(Locale.ENGLISH);
-
+       // Locale.setDefault(new Locale("UK", "UA", "strings.properties"));
+        User user = new User.Builder()
+                .setRole(User.ROLE.UNKNOWN.toString())
+                .build();
         servletConfig.getServletContext().setAttribute("loggedUsers", new HashSet<String>());
 
 
@@ -50,12 +53,14 @@ public class Servlet extends HttpServlet {
 
         commandMap.put("/gotoselect", new GoToSelectExhibitionCommand());
         commandMap.put("/update", new UpdateCommand());
-        commandMap.put("/updateghost", new UpdateGhostCommand());
+
 
         commandMap.put("/gotobook", new GoToBookingCommand());
         commandMap.put("/book", new BookingCommand());
 
         commandMap.put("/gotomytickets", new GoToMyTickets());
+
+        commandMap.put("/denied", new GoToAccessDeniedCommand());
 
     }
 

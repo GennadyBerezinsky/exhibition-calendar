@@ -45,6 +45,10 @@ public class User {
         return role.toString();
     }
 
+    public ROLE userRole() {
+        return this.role;
+    }
+
     public static class Builder {
         private long idUser = 0;
         private String name = "";

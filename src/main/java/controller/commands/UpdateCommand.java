@@ -33,6 +33,6 @@ public class UpdateCommand implements Command {
         request.setAttribute("expos", exhibitionList);
 
         log.trace("ids: hsll cat " + hall + " " + cat);
-        return "/WEB-INF/view/user/selectexhibitionghost.jsp";
+        return "/WEB-INF/view/user/selectexhibition.jsp";
     }
 }

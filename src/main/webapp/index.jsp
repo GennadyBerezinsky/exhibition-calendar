@@ -5,11 +5,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<c:if test="${lang==null}">
+<c:if test="${locale==null}">
+
   <fmt:setBundle basename="strings" var="lang" scope="session"/>
 </c:if>
 
-<c:if test="${param.lang.equals('ua')}">
+<c:if test="${param.locale.equals('UA')}">
 
   <fmt:setLocale value="ua" scope="session"/>
   <fmt:setBundle basename="strings"
@@ -55,7 +56,7 @@
         </button>
 
         <a href="index.jsp?lang=EN">English</a>
-        <a href="index.jsp?lang=UA">UA</a>
+        <a href="${pageContext.request.contextPath}/servlet/locale">UA</a>
 
 
 
@@ -76,10 +77,14 @@
         <div class="col-sm-1">
         </div>
         <div class="col-10">
+          <c:out value="${locale}"/>
+
+
           <div class="display-3" align="center">
             <fmt:message key="welcome" bundle="${lang}"/>
           </div>
-          <c:out value="${param.lang}"/>
+
+
 
 
           <c:if test="${not empty error}">
