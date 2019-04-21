@@ -25,7 +25,7 @@
     <meta name="author" content="">
 
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>My Tickets</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +60,7 @@
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/servlet/toregistr"><fmt:message key="registration"/></a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/servlet/logout"><fmt:message key="LOG_OUT"/></a>
                     </li>
 
                     </li>

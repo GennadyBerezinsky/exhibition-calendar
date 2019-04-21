@@ -38,6 +38,7 @@ public class AccessFilter implements Filter {
         userRoleAllowed.add("/gotobook");
         userRoleAllowed.add("/gotomytickets");
         userRoleAllowed.add("/denied");
+        userRoleAllowed.add("logout");
 
 
         adminRoleAllowed.add("/index");
@@ -49,6 +50,7 @@ public class AccessFilter implements Filter {
         adminRoleAllowed.add("/gotonewexhibition");
         adminRoleAllowed.add("/newexhibition");
         adminRoleAllowed.add("/denied");
+        adminRoleAllowed.add("/logout");
 
 
         unknownRoleAllowed.add("/toregistr");
@@ -56,6 +58,7 @@ public class AccessFilter implements Filter {
         unknownRoleAllowed.add("/login");
         unknownRoleAllowed.add("/index");
         unknownRoleAllowed.add("/denied");
+        unknownRoleAllowed.add("/logout");
 
         accessMap.put("USER", userRoleAllowed);
         accessMap.put("ADMIN", adminRoleAllowed);

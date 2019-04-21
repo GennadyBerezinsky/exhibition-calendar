@@ -40,6 +40,7 @@ public class Servlet extends HttpServlet {
         commandMap.put("/user", new GoToUserCommand());
         commandMap.put("/admin", new GoToAdminCommand());
         commandMap.put("/login", new LoginCommand());
+        commandMap.put("/logout", new LogoutCommand());
 
 
         commandMap.put("/newcat", new NewcatCommand());
