@@ -38,7 +38,7 @@ public class AccessFilter implements Filter {
         userRoleAllowed.add("/gotobook");
         userRoleAllowed.add("/gotomytickets");
         userRoleAllowed.add("/denied");
-        userRoleAllowed.add("logout");
+        userRoleAllowed.add("/logout");
 
 
         adminRoleAllowed.add("/index");
