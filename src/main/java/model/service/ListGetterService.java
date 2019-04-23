@@ -1,6 +1,6 @@
 package model.service;
 
-import model.dto.TicketListDto;
+
 import model.dao.*;
 import model.entity.Category;
 import model.entity.Exhibition;
@@ -41,10 +41,6 @@ public class ListGetterService {
         return dao.getSearchExhibition(idHall, idCat);
     }
 
-    public List<TicketListDto> getUserTicketList(long userId) {
-        DaoFactory factory = DaoFactory.getInstance();
-        TicketDao dao = factory.createTicketDao();
-        return dao.getUserTickets(userId);
-    }
+
 
 }

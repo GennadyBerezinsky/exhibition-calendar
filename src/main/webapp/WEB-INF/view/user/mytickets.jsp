@@ -103,6 +103,17 @@
                     </c:forEach>
                     </tbody>
                 </table>
+
+                <form action="${pageContext.request.contextPath}/servlet/topage">
+                    <ul class="pagination">
+                        <c:forEach var="i" begin="1" end="${pages}">
+                            <li>
+                                <input type="submit" name="pagenum" value="${i}">
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </form>
+
             </c:if>
 
 

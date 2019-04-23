@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface TicketDao extends GenericDao<Ticket> {
     long getLastId();
-    List<TicketListDto> getUserTickets(long userID);
+    List<TicketListDto> getUserTicketsPage(int offset, long userID);
+    int countRows(long userID);
+
 }
