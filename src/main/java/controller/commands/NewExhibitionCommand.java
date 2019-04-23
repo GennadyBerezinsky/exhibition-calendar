@@ -2,6 +2,7 @@ package controller.commands;
 
 import model.entity.Exhibition;
 import model.service.AdminService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 
 
 public class NewExhibitionCommand implements Command {
+    private static final Logger log = Logger.getLogger(NewExhibitionCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {

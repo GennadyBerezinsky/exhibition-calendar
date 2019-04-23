@@ -78,9 +78,11 @@ public class AccessFilter implements Filter {
                 List<String> commandList = accessMap.get(role);
                 String path = request.getRequestURI().toLowerCase().replaceAll("/servlet", "").trim();
                 if (commandList.contains(path)) {
+                    log.info("filter allow path for logged users");
                     filterChain.doFilter(request, response);
                 }
                 else {
+                    log.info("access defined by filter");
                     response.sendRedirect("redirect: /denied");
                 }
             }
@@ -89,9 +91,11 @@ public class AccessFilter implements Filter {
                 List<String> commandList1 = accessMap.getOrDefault("UNKNOWN", unknownRoleAllowed);
                 String path = request.getRequestURI().toLowerCase().replaceAll("/servlet", "").trim();
                 if (commandList1.contains(path)) {
+                    log.info("filter allow path");
                     filterChain.doFilter(request, response);
                 }
                 else {
+                    log.info("access defined by filter");
                     response.sendRedirect("redirect: /denied");
                 }
             }

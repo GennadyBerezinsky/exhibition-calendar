@@ -17,6 +17,7 @@ public class AuthUtility {
     private static final Logger log = Logger.getLogger(AuthUtility.class);
 
     public static void setRole(HttpServletRequest request, User user){
+        log.info("user " + user.getLogin() + " logged as " + user.getRole());
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         session.setAttribute("id", user.getIdUser());
@@ -52,6 +53,7 @@ public class AuthUtility {
     }
 
     public static void logout(HttpServletRequest request, String  login) {
+        log.info("user " + login + " looged out");
         Set<String> loggedUsers = getLoggedUsers(request);
         loggedUsers.remove(login);
         setLoggedUsers(request, loggedUsers);

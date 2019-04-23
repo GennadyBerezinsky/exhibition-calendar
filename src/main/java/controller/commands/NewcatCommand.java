@@ -2,6 +2,7 @@ package controller.commands;
 
 import model.entity.Category;
 import model.service.AdminService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 public class NewcatCommand implements Command {
+    private static final Logger log = Logger.getLogger(NewcatCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -21,6 +23,7 @@ public class NewcatCommand implements Command {
                 .build();
 
         adminService.newCat(category);
+        log.info("category " + catname + " created");
         return "redirect: /admin";
     }
 }

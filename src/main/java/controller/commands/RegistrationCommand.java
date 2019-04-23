@@ -25,9 +25,11 @@ public class RegistrationCommand implements Command {
         String pass2 = request.getParameter("confirm");
 
         if (!pass.equals(pass2)) {
+            log.info("paswords are not equals");
             return "redirect: /toregistr";
         }
         if(service.isExist(login)) {
+            log.info("user with such login already exists");
             return "redirect: /toregistr";
         }
 

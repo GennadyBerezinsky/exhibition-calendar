@@ -18,12 +18,14 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+        log.info("in login command");
         AuthorizationService service = new AuthorizationService();
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
 
 
         if(login == null || login.equals("") || pass == null || pass.equals("")) {
+            log.info("empty login or password");
             request.setAttribute("error", "Empty login or password");
             return "/index.jsp";
         }
@@ -31,6 +33,7 @@ public class LoginCommand implements Command {
         User user = service.getUserByLogin(login);
 
         if(AuthUtility.isLogged(request, login)) {
+            log.info("user " + user.getLogin() + " already logged");
             request.setAttribute("error", "User already logged");
             return "/index.jsp";
         }
@@ -41,6 +44,7 @@ public class LoginCommand implements Command {
             return "redirect: /" + redirectPath;
         }
         else {
+            log.info("wrong pass/login");
             request.setAttribute("error", "Wrong login/password");
             return "/index.jsp";
         }

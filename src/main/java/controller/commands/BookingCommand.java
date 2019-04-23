@@ -19,8 +19,9 @@ public class BookingCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+        log.info("in booking command");
         Exhibition exhibition = (Exhibition) request.getSession().getAttribute("exhibition");
-        log.info(exhibition.getIdExpo());
+        log.trace(exhibition.getIdExpo());
         User user = (User) request.getSession().getAttribute("user");
         int summ = Integer.valueOf(request.getParameter("payment"));
 
