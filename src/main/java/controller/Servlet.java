@@ -60,6 +60,7 @@ public class Servlet extends HttpServlet {
         commandMap.put("/book", new BookingCommand());
 
         commandMap.put("/gotomytickets", new GoToMyTickets());
+        commandMap.put("/topage", new PageUpdaterCommand());
 
         commandMap.put("/denied", new GoToAccessDeniedCommand());
 

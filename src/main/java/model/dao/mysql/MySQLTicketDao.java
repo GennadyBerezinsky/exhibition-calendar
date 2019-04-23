@@ -34,7 +34,7 @@ public class MySQLTicketDao implements TicketDao  {
             statement.setLong(2, entity.getIdUser());
 
             statement.executeUpdate();
-            log.info("statement added to butch");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,7 +54,63 @@ public class MySQLTicketDao implements TicketDao  {
         return id;
     }
 
+    public List<TicketListDto> getUserTicketsPage(int offset, long userID) {
+        List<TicketListDto> dtos = new ArrayList<>();
+        final String query = sql.getString("USER_TICKETS");
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setLong(1, userID);
+            statement.setInt(2, offset);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                long ticketId = resultSet.getLong("id_ticket");
+                String exhibitionName = resultSet.getString("name_expo");
+                String hallName = resultSet.getString("name_hall");
+                String catName = resultSet.getString("name_cat");
+                Date date = resultSet.getDate("date_expo");
+                long price = resultSet.getLong("price");
+
+                Ticket ticket = new Ticket.Builder()
+                        .setIdUser(userID)
+                        .setIdTicket(ticketId)
+                        .build();
+                Exhibition exhibition = new Exhibition.Builder()
+                        .setDate(date)
+                        .setName(exhibitionName)
+                        .setHallName(hallName)
+                        .setCatName(catName)
+                        .setPrice(price)
+                        .build();
+
+                dtos.add(new TicketListDto(ticket, exhibition));
+            }
+        } catch (SQLException e) {
+            log.error("sql exception: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return dtos;
+    }
+
     @Override
+    public int countRows(long userID) {
+        int rows = 0;
+        final String query = sql.getString("GET_ROWS_TICKET");
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setLong(1, userID);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                rows = resultSet.getInt(1);
+                log.trace("amoung: " + rows);
+            }
+        } catch (SQLException e) {
+            log.error("sql exception: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return rows;
+    }
+
+  /*  @Override
+    @Deprecated
     public List<TicketListDto> getUserTickets(long userID) {
         log.info("user id in dao: " + userID);
         List<TicketListDto> dtoList = new ArrayList<>();
@@ -90,7 +146,7 @@ public class MySQLTicketDao implements TicketDao  {
         }
         log.info("list size in dao: " + dtoList.size());
         return dtoList;
-    }
+    } */
 
     @Override
     public Ticket findById(int id) {

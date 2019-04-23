@@ -39,6 +39,7 @@ public class AccessFilter implements Filter {
         userRoleAllowed.add("/gotomytickets");
         userRoleAllowed.add("/denied");
         userRoleAllowed.add("/logout");
+        userRoleAllowed.add("/topage");
 
 
         adminRoleAllowed.add("/index");
