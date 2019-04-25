@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-primary"><fmt:message key="UPDATE"/> </button>
+                        <button type="submit" class="btn btn-primary" style = "margin-top: 9%;"><fmt:message key="UPDATE"/> </button>
                     </div>
                 </div>
             </form>

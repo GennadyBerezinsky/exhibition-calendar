@@ -5,12 +5,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<c:if test="${locale==null}">
+<c:if test="${lang==null}">
 
   <fmt:setBundle basename="strings" var="lang" scope="session"/>
 </c:if>
 
-<c:if test="${param.locale.equals('UA')}">
+<c:if test="${param.get('lang').equals('UA')}">
 
   <fmt:setLocale value="ua" scope="session"/>
   <fmt:setBundle basename="strings"
@@ -55,10 +55,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a href="index.jsp?lang=EN">English</a>
-        <a href="${pageContext.request.contextPath}/servlet/locale">UA</a>
-
-
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -77,7 +73,7 @@
         <div class="col-sm-1">
         </div>
         <div class="col-10">
-          <c:out value="${locale}"/>
+
 
 
           <div class="display-3" align="center">
